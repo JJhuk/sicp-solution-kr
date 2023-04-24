@@ -1,3 +1,5 @@
+#lang sicp
+
 (define (square x)
     (* x x))
 
@@ -7,7 +9,7 @@
         3))
 
 (define (good-enough? guess x)
-    (< (abs (- guess (improve guess x))) 0.001))
+    (= guess (improve guess x)))
 
 (define (cube-iter guess x)
     (if (good-enough? guess x)
@@ -18,10 +20,8 @@
 (define (cube-root x)
     (cube-iter 1.0 x))
 
-; 1 ]=> (cube-root 27)
-
-; ;Value: 3.0000005410641766
-
-; 1 ]=> (cube-root 8)
-
-; ;Value: 2.000004911675504
+(cube-root 27)
+; ;Value: 3.0
+(cube-root 8)
+; ;Value: 2.0
+(cube-root 99990)

@@ -1,3 +1,5 @@
+#lang sicp
+
 (define (average x y)
     (/ (+ x y) 2))
 
@@ -18,13 +20,13 @@
             guess
             (sqrt-iter (improve guess x)
                         x)))
-(define (new-sqrt x)
+(define (sqrt x)
     (sqrt-iter 1.0 x))
 
 ; my version
     
 (define (my-good-enough? guess x)
-    (< (abs (- guess (improve guess x))) 0.001))
+    (= guess (improve guess x)))
 
 (define (my-sqrt-iter guess x)
     (if (my-good-enough? guess x)
@@ -36,14 +38,8 @@
     (my-sqrt-iter 1.0 x))
 
 
-; 1 ]=> (square (sqrt 0.0009))
+(square (sqrt 0.0009))
+;0.0016241401856992538
 
-; ;Value: .0009
-
-; 1 ]=> (square (new-sqrt 0.0009))
-
-; ;Value: 1.6241401856992538e-3
-
-; 1 ]=> (square (my-sqrt 0.0009))
-
-; ;Value: 9.016608107957646e-4
+(square (my-sqrt 0.0009))
+;0.0009
